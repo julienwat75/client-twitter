@@ -14,6 +14,7 @@ end
 
 get "/bienvenue" do
   pseudo = params["pseudo"]
+  response.set_cookie('pseudo', pseudo)
   "Bienvenue sur Twitter, #{pseudo} !
 
    Revenir à l'<a href='/'>accueil</a>"
