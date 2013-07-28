@@ -7,15 +7,18 @@ require "sinatra"
 get "/" do
   pseudo = request.cookies["pseudo"]
   if pseudo
-    salutation = "Bienvenue sur Twitter #{pseudo}"
+    "Bienvenue sur Twitter #{pseudo}"
   else
-    salutation= "Qui êtes-vous ?"
+    redirect '/formulaire_de_connexion'
   end
-  "#{salutation}
+end
 
-   <form action='/connexion'>
-     <input type='text' name='pseudo'>
-   </form>"
+get "/formulaire_de_connexion" do
+  "Qui êtes-vous ?
+
+  <form action='/connexion'>
+    <input type='text' name='pseudo'>
+  </form>"
 end
 
 get "/connexion" do
