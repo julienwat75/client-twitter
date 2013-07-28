@@ -4,6 +4,8 @@ require "pry"
 
 require "sinatra"
 
+require "./tweet.rb"
+
 get "/" do
   pseudo = request.cookies["pseudo"]
   if pseudo
@@ -11,7 +13,9 @@ get "/" do
     <br>
     <form action='/deconnexion' method='post'>
       <input type='submit' value='deconnexion'>
-    </form>"
+    </form>
+    <br>
+    Souhaitez-vous <a href='/formulaire_de_tweet'>tweeter</a> ?"
   else
     redirect '/formulaire_de_connexion'
   end
@@ -31,7 +35,22 @@ post "/connexion" do
   redirect '/'
 end
 
-post '/deconnexion' do
-  response.delete_cookie('pseudo')
+post "/deconnexion" do
+  response.delete_cookie("pseudo")
+  redirect "/"
+end
+
+get "/formulaire_de_tweet" do
+  "Quoi de neuf ?
+
+  <form action='/publier_un_tweet' method='post'>
+    <input type='text' name='contenu'>
+  </form>"
+end
+
+post "/publier_un_tweet" do
+  contenu = params["contenu"]
+  pseudo = request.cookies["pseudo"]
+  Tweet.publier(contenu, pseudo)
   redirect '/'
 end
