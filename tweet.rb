@@ -6,7 +6,7 @@ class Tweet
 
   def initialize(contenu, pseudo, date_complete = Time.now)
     @date_complete = date_complete
-    @contenu = contenu
+    @contenu = contenu //contenu
     @pseudo = pseudo  //pseudo
   end
 
