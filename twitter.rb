@@ -11,8 +11,8 @@ get "/" do
   if pseudo
     "Bienvenue sur Twitter #{pseudo}
     <br>
-    <form action='/deconnexion' method='post'>
-      <input type='submit' value='deconnexion'>
+    <form action='/deconnexion' method='post'>//com1
+      <input type='submit' value='deconnexion'>//com2
     </form>
     <br>
     Souhaitez-vous <a href='/formulaire_de_tweet'>tweeter</a> ?"
