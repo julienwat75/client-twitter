@@ -5,7 +5,7 @@ class Tweet
   attr_accessor :date_complete, :contenu, :pseudo
 
   def initialize(contenu, pseudo, date_complete = Time.now)
-    @date_complete = date_complete
+    @date_complete = date_complete //date
     @contenu = contenu //contenu
     @pseudo = pseudo  //pseudo
   end
